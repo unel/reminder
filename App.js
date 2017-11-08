@@ -5,14 +5,14 @@ import {types} from 'mobx-state-tree';
 
 const ReminderCategory = types.model("ReminderCategory", {
   title: types.string,
-  remindOptions: types.compose({
-    notificationType: type.string
+  remindOptions: types.map({
+    notificationType: types.string
   })
 })
 
 const Reminder = types.model("Reminder", {
   title: types.string,
-  category: types.reference("ReminderCategory")
+  category: types.reference(ReminderCategory)
 });
 
 const Store = types.model({
